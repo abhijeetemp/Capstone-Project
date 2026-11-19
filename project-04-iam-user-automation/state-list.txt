@@ -1,0 +1,2 @@
+aws_iam_user.capstone_user
+aws_iam_user_policy.s3_read

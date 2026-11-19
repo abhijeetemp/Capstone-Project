@@ -1,0 +1,47 @@
+# aws_iam_user.capstone_user:
+resource "aws_iam_user" "capstone_user" {
+    arn                  = "arn:aws:iam::590507089733:user/capstone-terraform-s3-reader"
+    force_destroy        = false
+    id                   = "capstone-terraform-s3-reader"
+    name                 = "capstone-terraform-s3-reader"
+    path                 = "/"
+    permissions_boundary = [90mnull[0m[0m
+    tags                 = {
+        "Project" = "Capstone Project 4"
+    }
+    tags_all             = {
+        "Project" = "Capstone Project 4"
+    }
+    unique_id            = "AIDAYS7HXD5C6FKH3Q7ZB"
+}
+
+# aws_iam_user_policy.s3_read:
+resource "aws_iam_user_policy" "s3_read" {
+    id          = "capstone-terraform-s3-reader:capstone-s3-read-policy"
+    name        = "capstone-s3-read-policy"
+    name_prefix = [90mnull[0m[0m
+    policy      = jsonencode(
+        {
+            Statement = [
+                {
+                    Action   = [
+                        "s3:ListAllMyBuckets",
+                        "s3:GetBucketLocation",
+                        "s3:ListBucket",
+                        "s3:GetObject",
+                    ]
+                    Effect   = "Allow"
+                    Resource = "*"
+                },
+            ]
+            Version   = "2012-10-17"
+        }
+    )
+    user        = "capstone-terraform-s3-reader"
+}
+
+
+Outputs:
+
+iam_user_arn = "arn:aws:iam::590507089733:user/capstone-terraform-s3-reader"
+iam_username = "capstone-terraform-s3-reader"
