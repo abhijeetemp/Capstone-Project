@@ -1,0 +1,28 @@
+Secure Linux Server Permissions - Test Evidence
+
+Group:
+secureteam
+
+Users:
+alice - member of secureteam
+bob - not a member of secureteam
+
+Directory:
+ /opt/secure-project
+
+Directory permissions:
+770 (root:secureteam)
+
+Secret file:
+ /opt/secure-project/secret.txt
+
+File permissions:
+660 (root:secureteam)
+
+Test results:
+Alice successfully wrote and read a file.
+Bob was denied read access to secret.txt.
+Bob was denied write access to the protected directory.
+
+Conclusion:
+Group-based Linux permissions successfully restricted access.
