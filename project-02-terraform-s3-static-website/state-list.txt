@@ -1,0 +1,6 @@
+aws_s3_bucket.website
+aws_s3_bucket_ownership_controls.website
+aws_s3_bucket_policy.website
+aws_s3_bucket_public_access_block.website
+aws_s3_bucket_website_configuration.website
+aws_s3_object.index

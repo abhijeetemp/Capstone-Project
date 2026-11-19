@@ -1,0 +1,184 @@
+# aws_s3_bucket.website:
+resource "aws_s3_bucket" "website" {
+    acceleration_status         = [90mnull[0m[0m
+    arn                         = "arn:aws:s3:::capstone-project-static-website-590507089733"
+    bucket                      = "capstone-project-static-website-590507089733"
+    bucket_domain_name          = "capstone-project-static-website-590507089733.s3.amazonaws.com"
+    bucket_namespace            = "global"
+    bucket_prefix               = [90mnull[0m[0m
+    bucket_region               = "eu-north-1"
+    bucket_regional_domain_name = "capstone-project-static-website-590507089733.s3.eu-north-1.amazonaws.com"
+    force_destroy               = false
+    hosted_zone_id              = "Z3BAZG2TWCNX0D"
+    id                          = "capstone-project-static-website-590507089733"
+    object_lock_enabled         = false
+    policy                      = [90mnull[0m[0m
+    region                      = "eu-north-1"
+    request_payer               = "BucketOwner"
+    tags                        = {
+        "Environment" = "Capstone"
+        "Name"        = "Capstone Static Website"
+    }
+    tags_all                    = {
+        "Environment" = "Capstone"
+        "Name"        = "Capstone Static Website"
+    }
+
+    grant {
+        id          = "a84b6b901dd298966fb2355906e3b41789c63de694551f0cc2636bee79cb7cc4"
+        permissions = [
+            "FULL_CONTROL",
+        ]
+        type        = "CanonicalUser"
+        uri         = [90mnull[0m[0m
+    }
+
+    server_side_encryption_configuration {
+        rule {
+            bucket_key_enabled = false
+
+            apply_server_side_encryption_by_default {
+                kms_master_key_id = [90mnull[0m[0m
+                sse_algorithm     = "AES256"
+            }
+        }
+    }
+
+    versioning {
+        enabled    = false
+        mfa_delete = false
+    }
+}
+
+# aws_s3_bucket_ownership_controls.website:
+resource "aws_s3_bucket_ownership_controls" "website" {
+    bucket = "capstone-project-static-website-590507089733"
+    id     = "capstone-project-static-website-590507089733"
+    region = "eu-north-1"
+
+    rule {
+        object_ownership = "BucketOwnerPreferred"
+    }
+}
+
+# aws_s3_bucket_policy.website:
+resource "aws_s3_bucket_policy" "website" {
+    bucket = "capstone-project-static-website-590507089733"
+    id     = "capstone-project-static-website-590507089733"
+    policy = jsonencode(
+        {
+            Statement = [
+                {
+                    Action    = "s3:GetObject"
+                    Effect    = "Allow"
+                    Principal = "*"
+                    Resource  = "arn:aws:s3:::capstone-project-static-website-590507089733/*"
+                    Sid       = "PublicReadGetObject"
+                },
+            ]
+            Version   = "2012-10-17"
+        }
+    )
+    region = "eu-north-1"
+}
+
+# aws_s3_bucket_public_access_block.website:
+resource "aws_s3_bucket_public_access_block" "website" {
+    block_public_acls       = false
+    block_public_policy     = false
+    bucket                  = "capstone-project-static-website-590507089733"
+    id                      = "capstone-project-static-website-590507089733"
+    ignore_public_acls      = false
+    region                  = "eu-north-1"
+    restrict_public_buckets = false
+}
+
+# aws_s3_bucket_website_configuration.website:
+resource "aws_s3_bucket_website_configuration" "website" {
+    bucket                = "capstone-project-static-website-590507089733"
+    expected_bucket_owner = [90mnull[0m[0m
+    id                    = "capstone-project-static-website-590507089733"
+    region                = "eu-north-1"
+    routing_rules         = [90mnull[0m[0m
+    website_domain        = "s3-website.eu-north-1.amazonaws.com"
+    website_endpoint      = "capstone-project-static-website-590507089733.s3-website.eu-north-1.amazonaws.com"
+
+    index_document {
+        suffix = "index.html"
+    }
+}
+
+# aws_s3_object.index:
+resource "aws_s3_object" "index" {
+    arn                           = "arn:aws:s3:::capstone-project-static-website-590507089733/index.html"
+    bucket                        = "capstone-project-static-website-590507089733"
+    bucket_key_enabled            = false
+    cache_control                 = [90mnull[0m[0m
+    checksum_crc32                = [90mnull[0m[0m
+    checksum_crc32c               = [90mnull[0m[0m
+    checksum_crc64nvme            = [90mnull[0m[0m
+    checksum_sha1                 = [90mnull[0m[0m
+    checksum_sha256               = [90mnull[0m[0m
+    content                       = <<-EOT
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>AWS Capstone Project - S3 Website</title>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background: #f0f4f8;
+                    text-align: center;
+                    padding: 50px;
+                }
+                .container {
+                    background: white;
+                    padding: 40px;
+                    border-radius: 12px;
+                    max-width: 700px;
+                    margin: auto;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                }
+                h1 {
+                    color: #232f3e;
+                }
+                p {
+                    font-size: 18px;
+                    color: #555;
+                }
+                .success {
+                    color: #198754;
+                    font-weight: bold;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>AWS S3 Static Website</h1>
+                <p class="success">Website deployed successfully using Terraform!</p>
+                <p>This website is hosted on Amazon S3.</p>
+                <p>Capstone Project 2 - AWS Infrastructure Automation</p>
+            </div>
+        </body>
+        </html>
+    EOT
+    content_disposition           = [90mnull[0m[0m
+    content_encoding              = [90mnull[0m[0m
+    content_language              = [90mnull[0m[0m
+    content_type                  = "text/html"
+    etag                          = "aae3de792ffcf9aca7a7f73fe6e20e44"
+    force_destroy                 = false
+    id                            = "capstone-project-static-website-590507089733/index.html"
+    key                           = "index.html"
+    object_lock_legal_hold_status = [90mnull[0m[0m
+    object_lock_mode              = [90mnull[0m[0m
+    object_lock_retain_until_date = [90mnull[0m[0m
+    region                        = "eu-north-1"
+    server_side_encryption        = "AES256"
+    storage_class                 = "STANDARD"
+    tags_all                      = {}
+    version_id                    = [90mnull[0m[0m
+    website_redirect              = [90mnull[0m[0m
+}
