@@ -1,5 +1,7 @@
 # Project 7: CI Validation for Terraform
 
+![Terraform Validation](https://github.com/abhijeetemp/Capstone-Project/actions/workflows/terraform-validation.yml/badge.svg)
+
 ## Goal
 Automate Infrastructure as Code checks.
 
