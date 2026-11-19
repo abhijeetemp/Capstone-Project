@@ -15,3 +15,7 @@ output "project_name" {
 output "version_control_status" {
   value = "Infrastructure code tracked with Git"
 }
+
+output "revision" {
+  value = "Version 2"
+}
