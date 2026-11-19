@@ -1,8 +1,8 @@
 # aws_instance.web:
 resource "aws_instance" "web" {
     ami                                  = "ami-097e04d8dae631ee5"
-    arn                                  = "arn:aws:ec2:eu-north-1:590507089733:instance/i-02e35bc6f3f2f73b3"
-    associate_public_ip_address          = false
+    arn                                  = "arn:aws:ec2:eu-north-1:590507089733:instance/i-0049d7b68d11ff631"
+    associate_public_ip_address          = true
     availability_zone                    = "eu-north-1a"
     disable_api_stop                     = false
     disable_api_termination              = false
@@ -12,7 +12,7 @@ resource "aws_instance" "web" {
     hibernation                          = false
     host_id                              = [90mnull[0m[0m
     iam_instance_profile                 = [90mnull[0m[0m
-    id                                   = "i-02e35bc6f3f2f73b3"
+    id                                   = "i-0049d7b68d11ff631"
     instance_initiated_shutdown_behavior = "stop"
     instance_lifecycle                   = [90mnull[0m[0m
     instance_state                       = "running"
@@ -26,11 +26,11 @@ resource "aws_instance" "web" {
     placement_group                      = [90mnull[0m[0m
     placement_group_id                   = [90mnull[0m[0m
     placement_partition_number           = 0
-    primary_network_interface_id         = "eni-06dd1cb08a6d07d6d"
-    private_dns                          = "ip-10-0-10-203.eu-north-1.compute.internal"
-    private_ip                           = "10.0.10.203"
-    public_dns                           = [90mnull[0m[0m
-    public_ip                            = [90mnull[0m[0m
+    primary_network_interface_id         = "eni-0f058f197fabe8185"
+    private_dns                          = "ip-10-0-8-52.eu-north-1.compute.internal"
+    private_ip                           = "10.0.8.52"
+    public_dns                           = "ec2-51-20-96-37.eu-north-1.compute.amazonaws.com"
+    public_ip                            = "51.20.96.37"
     region                               = "eu-north-1"
     secondary_private_ips                = []
     security_groups                      = []
@@ -44,9 +44,18 @@ resource "aws_instance" "web" {
         "Name" = "capstone-web-server"
     }
     tenancy                              = "default"
+    user_data                            = <<-EOT
+        #!/bin/bash
+        dnf update -y
+        dnf install -y httpd
+        systemctl enable httpd
+        systemctl start httpd
+        
+        echo "<h1>Capstone Project 1 - Terraform Web Server</h1>" > /var/www/html/index.html
+    EOT
     user_data_replace_on_change          = false
     vpc_security_group_ids               = [
-        "sg-00a646eb4d070a9d6",
+        "sg-0f4a589b9fe3e023d",
     ]
 
     capacity_reservation_specification {
@@ -82,7 +91,7 @@ resource "aws_instance" "web" {
 
     primary_network_interface {
         delete_on_termination = true
-        network_interface_id  = "eni-06dd1cb08a6d07d6d"
+        network_interface_id  = "eni-0f058f197fabe8185"
     }
 
     private_dns_name_options {
@@ -100,8 +109,66 @@ resource "aws_instance" "web" {
         tags                  = {}
         tags_all              = {}
         throughput            = 125
-        volume_id             = "vol-0ebf63ef28c367c8d"
+        volume_id             = "vol-03263222c063c2bf0"
         volume_size           = 8
         volume_type           = "gp3"
     }
+}
+
+# aws_security_group.web_sg:
+resource "aws_security_group" "web_sg" {
+    arn                    = "arn:aws:ec2:eu-north-1:590507089733:security-group/sg-0f4a589b9fe3e023d"
+    description            = "Allow SSH and HTTP"
+    egress                 = [
+        {
+            cidr_blocks      = [
+                "0.0.0.0/0",
+            ]
+            description      = [90mnull[0m[0m
+            from_port        = 0
+            ipv6_cidr_blocks = []
+            prefix_list_ids  = []
+            protocol         = "-1"
+            security_groups  = []
+            self             = false
+            to_port          = 0
+        },
+    ]
+    id                     = "sg-0f4a589b9fe3e023d"
+    ingress                = [
+        {
+            cidr_blocks      = [
+                "0.0.0.0/0",
+            ]
+            description      = [90mnull[0m[0m
+            from_port        = 22
+            ipv6_cidr_blocks = []
+            prefix_list_ids  = []
+            protocol         = "tcp"
+            security_groups  = []
+            self             = false
+            to_port          = 22
+        },
+        {
+            cidr_blocks      = [
+                "0.0.0.0/0",
+            ]
+            description      = [90mnull[0m[0m
+            from_port        = 80
+            ipv6_cidr_blocks = []
+            prefix_list_ids  = []
+            protocol         = "tcp"
+            security_groups  = []
+            self             = false
+            to_port          = 80
+        },
+    ]
+    name                   = "capstone-web-sg"
+    name_prefix            = [90mnull[0m[0m
+    owner_id               = "590507089733"
+    region                 = "eu-north-1"
+    revoke_rules_on_delete = false
+    tags                   = {}
+    tags_all               = {}
+    vpc_id                 = "vpc-0956bd4896225a585"
 }
