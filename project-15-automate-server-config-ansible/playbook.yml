@@ -1,0 +1,35 @@
+---
+- name: Configure Ubuntu web server
+  hosts: webservers
+  become: true
+
+  tasks:
+    - name: Update apt package cache
+      apt:
+        update_cache: yes
+
+    - name: Install Apache web server
+      apt:
+        name: apache2
+        state: present
+
+    - name: Ensure Apache is running
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+
+    - name: Deploy website homepage
+      copy:
+        dest: /var/www/html/index.html
+        content: |
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>Ansible Capstone Project</title>
+          </head>
+          <body>
+            <h1>Server Configured with Ansible</h1>
+            <p>Apache web server was configured using an Ansible playbook.</p>
+          </body>
+          </html>
