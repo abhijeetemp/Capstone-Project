@@ -1,0 +1,28 @@
+{
+  "logs": {
+    "logs_collected": {
+      "files": {
+        "collect_list": [
+          {
+            "file_path": "/var/log/httpd/access_log",
+            "log_group_name": "capstone-project-17-apache-access",
+            "log_stream_name": "{instance_id}",
+            "timezone": "UTC"
+          },
+          {
+            "file_path": "/var/log/httpd/error_log",
+            "log_group_name": "capstone-project-17-apache-error",
+            "log_stream_name": "{instance_id}",
+            "timezone": "UTC"
+          },
+          {
+            "file_path": "/var/log/messages",
+            "log_group_name": "capstone-project-17-system",
+            "log_stream_name": "{instance_id}",
+            "timezone": "UTC"
+          }
+        ]
+      }
+    }
+  }
+}
