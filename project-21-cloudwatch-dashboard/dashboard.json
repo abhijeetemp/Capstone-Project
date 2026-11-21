@@ -1,0 +1,73 @@
+{
+  "widgets": [
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 0,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "EC2 CPU Utilization",
+        "view": "timeSeries",
+        "region": "eu-north-1",
+        "stat": "Average",
+        "period": 300,
+        "metrics": [
+          ["AWS/EC2", "CPUUtilization", "InstanceId", "i-0f5e07ac662f787d8"],
+          ["AWS/EC2", "CPUUtilization", "InstanceId", "i-0f70a79cf0137b329"]
+        ]
+      }
+    },
+    {
+      "type": "metric",
+      "x": 12,
+      "y": 0,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "ALB Request Count",
+        "view": "timeSeries",
+        "region": "eu-north-1",
+        "stat": "Sum",
+        "period": 300,
+        "metrics": [
+          ["AWS/ApplicationELB", "RequestCount", "LoadBalancer", "app/capstone-project-20-alb/395051d776c0eef7"]
+        ]
+      }
+    },
+    {
+      "type": "metric",
+      "x": 0,
+      "y": 6,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "Healthy Targets",
+        "view": "timeSeries",
+        "region": "eu-north-1",
+        "stat": "Average",
+        "period": 60,
+        "metrics": [
+          ["AWS/ApplicationELB", "HealthyHostCount", "TargetGroup", "targetgroup/capstone-project-20-tg/2c678f4a9814863e", "LoadBalancer", "app/capstone-project-20-alb/395051d776c0eef7"]
+        ]
+      }
+    },
+    {
+      "type": "metric",
+      "x": 12,
+      "y": 6,
+      "width": 12,
+      "height": 6,
+      "properties": {
+        "title": "ALB Target Response Time",
+        "view": "timeSeries",
+        "region": "eu-north-1",
+        "stat": "Average",
+        "period": 300,
+        "metrics": [
+          ["AWS/ApplicationELB", "TargetResponseTime", "TargetGroup", "targetgroup/capstone-project-20-tg/2c678f4a9814863e", "LoadBalancer", "app/capstone-project-20-alb/395051d776c0eef7"]
+        ]
+      }
+    }
+  ]
+}
