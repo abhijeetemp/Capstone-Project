@@ -1,0 +1,23 @@
+{
+    "RoleName": "capstone-project-23-ec2-s3-role",
+    "PolicyName": "capstone-project-23-s3-read-policy",
+    "PolicyDocument": {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "s3:ListBucket"
+                ],
+                "Resource": "arn:aws:s3:::capstone-project-22-logs-590507089733"
+            },
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "s3:GetObject"
+                ],
+                "Resource": "arn:aws:s3:::capstone-project-22-logs-590507089733/logs/*"
+            }
+        ]
+    }
+}

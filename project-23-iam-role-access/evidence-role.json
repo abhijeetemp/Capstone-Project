@@ -1,0 +1,23 @@
+{
+    "Role": {
+        "Path": "/",
+        "RoleName": "capstone-project-23-ec2-s3-role",
+        "RoleId": "AROAYS7HXD5CYRNXGRAY2",
+        "Arn": "arn:aws:iam::590507089733:role/capstone-project-23-ec2-s3-role",
+        "CreateDate": "2026-11-21T19:44:16+00:00",
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Service": "ec2.amazonaws.com"
+                    },
+                    "Action": "sts:AssumeRole"
+                }
+            ]
+        },
+        "MaxSessionDuration": 3600,
+        "RoleLastUsed": {}
+    }
+}
