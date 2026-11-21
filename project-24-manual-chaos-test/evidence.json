@@ -1,0 +1,18 @@
+{
+  "project": "Project 24 - Manual Chaos Test",
+  "region": "eu-north-1",
+  "instance_id": "i-0049d7b68d11ff631",
+  "service": "httpd",
+  "failure_test": {
+    "action": "systemctl stop httpd",
+    "result": "inactive",
+    "ssm_command_id": "01bc40cc-ea92-4325-9da3-26c79698beb1"
+  },
+  "recovery_test": {
+    "action": "systemctl start httpd",
+    "result": "active (running)",
+    "http_check": "HTTP/1.1 200 OK",
+    "ssm_command_id": "5e8461fb-956a-47fd-9e4f-9eef5b032f7d"
+  },
+  "outcome": "Recovery verified"
+}
