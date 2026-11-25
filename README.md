@@ -41,6 +41,37 @@ The objective of this capstone is to gain practical experience building, managin
 
 ---
 
+## 📚 Capstone Projects Index
+
+| # | Project | Link |
+|---|---|---|
+| 01 | Terraform EC2 | [Project 01](./project-01-terraform-ec2/) |
+| 02 | Terraform S3 Static Website | [Project 02](./project-02-terraform-s3-static-website/) |
+| 03 | EC2 CloudWatch Monitoring | [Project 03](./project-03-ec2-cloudwatch-monitoring/) |
+| 04 | IAM User Automation | [Project 04](./project-04-iam-user-automation/) |
+| 05 | Secure Linux Permissions | [Project 05](./project-05-secure-linux-permissions/) |
+| 06 | Version Control Infrastructure | [Project 06](./project-06-version-control-infrastructure/) |
+| 07 | Terraform CI | [Project 07](./project-07-terraform-ci/) |
+| 08 | Docker App | [Project 08](./project-08-docker-app/) |
+| 09 | Domain Controller | [Project 09](./project-09-domain-controller/) |
+| 10 | Internal DNS Setup | [Project 10](./project-10-internal-dns-setup/) |
+| 11 | Branching Policy | [Project 11](./project-11-branching-policy/) |
+| 12 | Infrastructure CI Trigger | [Project 12](./project-12-infrastructure-ci-trigger/) |
+| 13 | Build and Push ECR | [Project 13](./project-13-build-push-ecr/) |
+| 14 | App Deployment EKS | [Project 14](./project-14-app-deployment-eks/) |
+| 15 | Ansible Server Configuration | [Project 15](./project-15-automate-server-config-ansible/) |
+| 16 | HTTPS Enablement | [Project 16](./project-16-enable-https-acm/) |
+| 17 | CloudWatch Log Forwarding | [Project 17](./project-17-log-forwarding-cloudwatch/) |
+| 18 | GitOps Deployment | [Project 18](./project-18-gitops-deployment/) |
+| 19 | S3 Backup | [Project 19](./project-19-s3-backup/) |
+| 20 | Load Balancer | [Project 20](./project-20-load-balancer/) |
+| 21 | CloudWatch Dashboard | [Project 21](./project-21-cloudwatch-dashboard/) |
+| 22 | S3 Log Archive | [Project 22](./project-22-s3-log-archive/) |
+| 23 | IAM Role Based Access | [Project 23](./project-23-iam-role-access/) |
+| 24 | Project 24 | [Project 24](./project-24-manual-chaos-test/) |
+
+---
+
 ## Technologies Used
 
 - Amazon Web Services (AWS)
